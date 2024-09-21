@@ -12,10 +12,10 @@ class TreeRouters {
 class TreeRoutersPage {
   TreeRoutersPage._();
   static final router = <GoRoute>[
-    GoRoute(
-      path: TreeRouters.MENU,
-      builder: (context, state) => const MenuPage(),
-    ),
+    // GoRoute(
+    //   path: TreeRouters.MENU,
+    //   builder: (context, state) => const MenuPage(),
+    // ),
     GoRoute(
       path: TreeRouters.ASSETS_TREE,
       builder: (context, state) {

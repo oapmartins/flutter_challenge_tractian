@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeDefault.themeData,
       routerConfig: GoRouter(
         initialLocation: TreeRouters.ASSETS_TREE,
-        redirect: (context, state) => null,
         routes: [
           ...TreeRoutersPage.router,
         ],
