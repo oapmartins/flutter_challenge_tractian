@@ -4,8 +4,6 @@ import 'package:flutter_challenge_tractian/features/tree/domain/entities/assets_
 import 'package:flutter_challenge_tractian/features/tree/domain/entities/locations_entity.dart';
 import 'package:flutter_challenge_tractian/features/tree/domain/usecases/get_all_companies_assets_usecase.dart';
 import 'package:flutter_challenge_tractian/features/tree/domain/usecases/get_all_companies_locations_usecase.dart';
-import 'package:flutter_simple_treeview/flutter_simple_treeview.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AssetsController {
   AssetsController(this.getAllCompaniesAssetsUsecase, this.getAllCompaniesLocationsUsecase);
@@ -21,22 +19,17 @@ class AssetsController {
 
   List<AssetsEntity> listAllAssets = [];
   List<LocationsEntity> listAlllocations = [];
-  List<TreeNode> listTreeNode = [];
 
   Future<void> initServicesAssetController({required String companyId}) async {
     await getAllCompaniesAssets(companyId: companyId);
     await getAllCompaniesLocations(companyId: companyId);
 
-    generateTreeLocations();
+    generateRecursiveTreeLogic();
 
     if (loadingLocations.value == LoadingStatus.loaded && loadingAssets.value == LoadingStatus.loaded) {
       loading.value = LoadingStatus.loaded;
     } else if (loadingLocations.value == LoadingStatus.error || loadingAssets.value == LoadingStatus.error) {
       loading.value = LoadingStatus.error;
-    }
-
-    for (var element in listAlllocations) {
-      print(element.name);
     }
   }
 
@@ -55,6 +48,8 @@ class AssetsController {
   }
 
   Future<void> getAllCompaniesLocations({required String companyId}) async {
+    // Função recursiva que passa dentro de cada pai adicionado e percorre por todos os filhos para achar alguma dependência
+
     loadingLocations.value = LoadingStatus.loading;
     try {
       listAlllocations.clear();
@@ -68,54 +63,48 @@ class AssetsController {
     }
   }
 
-  void generateTreeLocations() {
-    for (var locationsFather in listAlllocations) {
-      // Vou pegar o primeiro location, e vejo se ele tem filhos
-      // Caso tenha, adiciono ele como pai e os filhos em seguida.
-      if (locationsFather.parentId == null) {
-        listTreeNode.add(
-          TreeNode(
-            key: ValueKey(locationsFather.id),
-            content: Row(
-              children: [
-                const Icon(
-                  FontAwesomeIcons.locationDot,
-                  color: Color(0xff2188FF),
-                  size: 20,
-                ),
-                const SizedBox(width: 10),
-                Text(locationsFather.name),
-              ],
-            ),
-            children: [],
-          ),
-        );
-      }
+  generateRecursiveTreeLogic() {
+    // Clonando a lista de locations para não alterar a original
 
-      for (var locationsSon in listAlllocations) {
-        if (locationsFather.id == locationsSon.parentId) {
-          listTreeNode
-              .firstWhere((element) {
-                return element.key.toString().contains(locationsSon.parentId ?? '');
-              })
-              .children
-              ?.add(
-                TreeNode(
-                  content: Row(
-                    children: [
-                      const Icon(
-                        FontAwesomeIcons.locationDot,
-                        color: Color(0xff2188FF),
-                        size: 20,
-                      ),
-                      const SizedBox(width: 10),
-                      Text(locationsSon.name),
-                    ],
-                  ),
-                  children: [],
-                ),
-              );
-        }
+    for (var location in listAlllocations) {
+      if (location.parentId == null) {
+        _addChildLocations(location);
+        _addAssetsToLocationsOrAssets(location);
+      }
+    }
+  }
+
+  // Função recursiva para associar assets a locais
+  void _addAssetsToLocationsOrAssets(dynamic location) {
+    for (var asset in listAllAssets) {
+      if (asset.locationId == location.id) {
+        location.children.add(asset);
+        _addChildAssets(asset);
+      }
+    }
+
+    // Chamada recursiva para processar filhos do local
+    for (final childrenLocation in location.children) {
+      _addAssetsToLocationsOrAssets(childrenLocation);
+    }
+  }
+
+  // Função recursiva para adicionar locais filhos
+  void _addChildLocations(LocationsEntity parent) {
+    for (var location in listAlllocations) {
+      if (location.parentId == parent.id) {
+        parent.children.add(location);
+        _addChildLocations(location);
+      }
+    }
+  }
+
+  // Função recursiva para adicionar assets filhos
+  void _addChildAssets(AssetsEntity parent) {
+    for (var asset in listAllAssets) {
+      if (asset.parentId == parent.id) {
+        parent.children.add(asset);
+        _addChildAssets(asset);
       }
     }
   }

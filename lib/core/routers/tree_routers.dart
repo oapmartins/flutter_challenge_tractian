@@ -5,22 +5,23 @@ import 'package:go_router/go_router.dart';
 // ignore_for_file: constant_identifier_names
 
 class TreeRouters {
-  static const MENU = '/';
-  static const ASSETS_TREE = '/assets';
+  static const String MENU = '/';
+  static const String ASSETS_TREE = '/assets';
 }
 
 class TreeRoutersPage {
-  TreeRoutersPage._();
-  static final router = <GoRoute>[
-    // GoRoute(
-    //   path: TreeRouters.MENU,
-    //   builder: (context, state) => const MenuPage(),
-    // ),
+  TreeRoutersPage._(); // Construtor privado para evitar instância
+
+  static final List<GoRoute> router = [
     GoRoute(
-      path: TreeRouters.ASSETS_TREE,
+      path: TreeRouters.MENU,
+      builder: (context, state) => const MenuPage(),
+    ),
+    GoRoute(
+      path: '${TreeRouters.ASSETS_TREE}/:companyId',
       builder: (context, state) {
-        // final companyId = state.pathParameters['companyId'] ?? '662fd0ee639069143a8fc387';
-        return const AssetsPage(companyId: '662fd0ee639069143a8fc387');
+        final String companyId = state.pathParameters['companyId'] ?? '662fd0ee639069143a8fc387';
+        return AssetsPage(companyId: companyId);
       },
     ),
   ];

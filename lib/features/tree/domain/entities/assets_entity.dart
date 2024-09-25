@@ -6,6 +6,7 @@ class AssetsEntity {
   final String? parentId;
   final String? locationId;
   final String? gatewayId;
+  List<AssetsEntity> children = [];
 
   AssetsEntity({
     required this.id,
@@ -16,4 +17,12 @@ class AssetsEntity {
     this.locationId,
     this.gatewayId,
   });
+
+  void addChild(AssetsEntity child) {
+    children.add(child);
+  }
+
+  void cleanChildrens() {
+    children.clear();
+  }
 }

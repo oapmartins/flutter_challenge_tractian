@@ -50,10 +50,10 @@ class AssetsDto {
       id: json['id'],
       name: json['name'],
       sensorType: json['sensorType'],
-      status: json['sensorType'],
-      parentId: json['sensorType'],
-      locationId: json['sensorType'],
-      gatewayId: json['sensorType'],
+      status: json['status'],
+      parentId: json['parentId'],
+      locationId: json['locationId'],
+      gatewayId: json['gatewayId'],
     );
   }
 

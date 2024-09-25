@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Challenge Tractian',
       theme: ThemeDefault.themeData,
       routerConfig: GoRouter(
-        initialLocation: TreeRouters.ASSETS_TREE,
+        initialLocation: TreeRouters.MENU,
         routes: [
           ...TreeRoutersPage.router,
         ],
