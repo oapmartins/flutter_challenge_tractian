@@ -5,7 +5,7 @@ Assets are essential to the operation of the industry, it can include everything
 
 ## Preview
 
-[![Watch the video]](assets/videos/video_previa_app.mp4)
+[![Vídeo App]](assets/videos/video_previa_app_compress.mp4)
 
 
 --- 
