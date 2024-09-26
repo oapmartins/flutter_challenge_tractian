@@ -1,4 +1,4 @@
-import 'package:flutter_challenge_tractian/features/tree/presentation/pages/assets_page.dart';
+import 'package:flutter_challenge_tractian/features/tree/presentation/pages/tree_page.dart';
 import 'package:flutter_challenge_tractian/features/tree/presentation/pages/menu_page.dart';
 import 'package:go_router/go_router.dart';
 
@@ -19,9 +19,11 @@ class TreeRoutersPage {
     ),
     GoRoute(
       path: '${TreeRouters.ASSETS_TREE}/:companyId',
+      // path: TreeRouters.ASSETS_TREE,
       builder: (context, state) {
+        // const String companyId = '662fd0ee639069143a8fc387';
         final String companyId = state.pathParameters['companyId'] ?? '662fd0ee639069143a8fc387';
-        return AssetsPage(companyId: companyId);
+        return TreePage(companyId: companyId);
       },
     ),
   ];

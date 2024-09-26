@@ -1,16 +1,26 @@
-# flutter_challenge_tractian
+# Mobile Software Engineer
 
-A new Flutter project.
 
-## Getting Started
+Assets are essential to the operation of the industry, it can include everything from manufacturing equipment to transportation vehicles to power generation systems. Proper management and maintenance is crucial to ensure that they continue to operate efficiently and effectively. A practical way to visualize the hierarchy of assets is through a tree structure.
 
-This project is a starting point for a Flutter application.
+## Preview
 
-A few resources to get you started if this is your first Flutter project:
+[![Watch the video](https://raw.githubusercontent.com/oapmartins/flutter_challenge_tractian/tree/main/assets/videos/thumbnail_previa_app.png)](https://raw.githubusercontent.com/oapmartins/flutter_challenge_tractian/tree/main/assets/videos/video_previa_app.mp4)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+--- 
+## 📦 Packages e Arquitetura
+Os packages seguintes foram utilziados para a construção do projeto. Não foram para a construção da Árvore nem da UI. 
+- dio
+- get_it
+- go_router
+- font_awesome_flutter
+
+Foi utilizada a arquitetura MVVM Clean, seguindo a estrutura de camadas data, domain e presentation. 
+
+
+## 🛠️ Melhorias futuras
+- Tratativa melhor dos erros em todas as partes das camadas
+- Testes unitários e de integração
+- Melhorar a filtragem (Por motivos de tempo a filtragem de LOCAIS não está 100% funcional).
+

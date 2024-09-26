@@ -6,7 +6,7 @@ import 'package:flutter_challenge_tractian/features/tree/domain/repositories/tre
 import 'package:flutter_challenge_tractian/features/tree/domain/usecases/get_all_companies_assets_usecase.dart';
 import 'package:flutter_challenge_tractian/features/tree/domain/usecases/get_all_companies_locations_usecase.dart';
 import 'package:flutter_challenge_tractian/features/tree/domain/usecases/get_all_companies_usecase.dart';
-import 'package:flutter_challenge_tractian/features/tree/presentation/controllers/assets_controller.dart';
+import 'package:flutter_challenge_tractian/features/tree/presentation/controllers/tree_controller.dart';
 import 'package:flutter_challenge_tractian/features/tree/presentation/controllers/menu_controller.dart';
 import 'package:get_it/get_it.dart';
 
@@ -29,11 +29,11 @@ void setupProviders() {
     getIt<GetAllCompaniesUsecase>(),
   ));
 
-  // Assets Provider
+  // Tree Provider
   getIt.registerFactory(() => GetAllCompaniesAssetsUsecase(getIt<TreeRepository>()));
   getIt.registerFactory(() => GetAllCompaniesLocationsUsecase(getIt<TreeRepository>()));
-  getIt.registerLazySingleton<AssetsController>(
-    () => AssetsController(
+  getIt.registerLazySingleton<TreeController>(
+    () => TreeController(
       getIt<GetAllCompaniesAssetsUsecase>(),
       getIt<GetAllCompaniesLocationsUsecase>(),
     ),

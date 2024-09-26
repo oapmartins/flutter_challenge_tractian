@@ -25,4 +25,18 @@ class AssetsEntity {
   void cleanChildrens() {
     children.clear();
   }
+
+  AssetsEntity deepCopy() {
+    List<AssetsEntity> copiedChildren = children.map((child) => child.deepCopy()).toList();
+
+    return AssetsEntity(
+      id: id,
+      name: name,
+      sensorType: sensorType,
+      status: status,
+      parentId: parentId,
+      locationId: locationId,
+      gatewayId: gatewayId,
+    )..children = copiedChildren;
+  }
 }
