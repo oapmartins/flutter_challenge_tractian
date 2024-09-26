@@ -5,7 +5,8 @@ Assets are essential to the operation of the industry, it can include everything
 
 ## Preview
 
-[![Vídeo App](assets/images/thumbnail_previa_app.png)](https://youtu.be/uunW7uHse-k)
+
+https://github.com/user-attachments/assets/96cb09d7-32bc-4bdc-a4cf-24d897b67b22
 
 
 --- 
