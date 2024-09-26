@@ -5,7 +5,7 @@ Assets are essential to the operation of the industry, it can include everything
 
 ## Preview
 
-[![Watch the video](https://raw.githubusercontent.com/oapmartins/flutter_challenge_tractian/tree/main/assets/videos/thumbnail_previa_app.png)](https://raw.githubusercontent.com/oapmartins/flutter_challenge_tractian/tree/main/assets/videos/video_previa_app.mp4)
+[![Watch the video]](assets/videos/video_previa_app.mp4)
 
 
 --- 
