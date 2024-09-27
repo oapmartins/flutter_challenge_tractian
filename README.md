@@ -11,13 +11,14 @@ https://github.com/user-attachments/assets/96cb09d7-32bc-4bdc-a4cf-24d897b67b22
 
 --- 
 ## 📦 Packages e Arquitetura
-Os packages seguintes foram utilziados para a construção do projeto. Não foram para a construção da Árvore nem da UI. 
+> 📌 Não foram utilizados packages para construções visuais e nem da Árvore.
+
+> 📌 Foi utilizada a arquitetura MVVM Clean, seguindo a estrutura de camadas data, domain e presentation. 
+
 - dio
 - get_it
 - go_router
 - font_awesome_flutter
-
-Foi utilizada a arquitetura MVVM Clean, seguindo a estrutura de camadas data, domain e presentation. 
 
 
 ## 🛠️ Melhorias futuras
