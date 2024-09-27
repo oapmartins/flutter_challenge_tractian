@@ -24,4 +24,5 @@ Foi utilizada a arquitetura MVVM Clean, seguindo a estrutura de camadas data, do
 - Tratativa melhor dos erros em todas as partes das camadas
 - Testes unitários e de integração
 - Melhorar a filtragem (Por motivos de tempo a filtragem de LOCAIS não está 100% funcional).
+- Melhoria de desempenho ao carregar árvores muito grandes
 
